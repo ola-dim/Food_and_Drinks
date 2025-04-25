@@ -3,6 +3,9 @@ import requests
 
 
 # set up logger
+logging.basicConfig(filename='..\\logs\\bot.log',
+                     level=logging.INFO,
+                     format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger('food_drinks_etl')
 
 def fetch_breweries(page:int =1, per_page:int =20):
@@ -30,4 +33,4 @@ def fetch_all_breweries(per_page=20):
 # if __name__ == "__main__":
 #     breweries_df = fetch_all_breweries(per_page=20)
 
-fetch_all_breweries(per_page=20)
+print(fetch_all_breweries(per_page=20))
