@@ -1,1 +1,2 @@
-# Food_and_Drinks
+# Food and Drinks Data Engineering project
+This project fetches data about breweries in the United States from a Public API, loads it into a PostgreSQL database and performs various analysis using Python and SQL.
