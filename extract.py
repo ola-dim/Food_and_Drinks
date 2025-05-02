@@ -20,7 +20,7 @@ def fetch_breweries(page:int =1, per_page:int =20):
     #url = "https://informed-data-challenge.netlify.app/api/breweries"
     params = {"page": page, "per_page":per_page}
     try:
-        response = requests.get(API_ENDPOINT, params=params, timeout=50)
+        response = requests.get(API_ENDPOINT, params=params)
         response.raise_for_status() # Raise an exception for bad status code
         return response.json()
     except requests.exceptions.RequestException as e:
@@ -37,8 +37,7 @@ def create_breweries_table(conn, cur):
     """ Create the breweries table in the database if it doesn't exist."""
     try:
         cur.execute("""
-            DROP TABLE IF EXISTS food_drinks;
-            CREATE TABLE food_drinks (
+            CREATE TABLE IF NOT EXISTS food_drinks (
 	            id VARCHAR(255) PRIMARY KEY
 	            ,name VARCHAR(255)
 	            ,brewery_type VARCHAR(255)
