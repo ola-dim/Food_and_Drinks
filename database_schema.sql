@@ -26,6 +26,3 @@ CREATE INDEX idx_brewery_type ON food_drinks (brewery_type);
 CREATE INDEX idx_state ON food_drinks (state);
 CREATE INDEX idx_rating ON food_drinks (rating);
 CREATE INDEX idx_number_of_ratings ON food_drinks (number_of_ratings);
-
-SELECT *
-FROM food_drinks
