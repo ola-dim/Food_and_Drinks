@@ -76,7 +76,7 @@ def insert_breweries(conn, cur, breweries):
     """ Inserts a list of brewery data into the database."""
     try:
         for brewery in breweries:
-            cur.execute(""" 
+            cur.execute("""
             INSERT INTO food_drinks (
                         id, name, brewery_type, street, address_2, address_3, city,
                         state, country_province, postal_code, website_url,
@@ -84,13 +84,13 @@ def insert_breweries(conn, cur, breweries):
                         number_of_ratings, updated_at, created_at )
                         VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
                         ON CONFLICT (id) DO NOTHING
-            """, (
+            """) (
                 brewery.get('id'), brewery.get('name'), brewery.get('brewery_type'), brewery.get('street'),
                 brewery.get('address_2'), brewery.get('address_3'), brewery.get('city'), brewery.get('state'),
                 brewery.get('country_province'), brewery.get('postal_code'), brewery.get('website_url'), brewery.get('phone'),
                 brewery.get('country'), brewery.get('longitude'), brewery.get('latitude'), brewery.get('tags'),
                 brewery.get('rating'), brewery.get('number_of_ratings'), brewery.get('updated_at'), brewery.get('created_at')
-            ))
+            )
         conn.commit()
         print(f"Inserted {len(breweries)} breweries.")
     except psycopg2.Error as e:
@@ -116,7 +116,7 @@ def main():
             if len(breweries) < PER_PAGE:
                 break
             page += 1
-                      
+
         cur.close()
     except psycopg2.Error as e:
         print(f"Database connection error: {e}")
