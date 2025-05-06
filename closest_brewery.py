@@ -49,7 +49,7 @@ def find_closest_brewery(user_lat, user_lon):
         if closest_brewery:
             print(f"The closest brewery is: {closest_brewery} (approximately {min_distance:.2f} km away).")
         else: 
-            print(f"No breweries with valid coordinates found.")
+            print("No breweries with valid coordinates found")
 
     except psycopg2.Error as e:
         print(f"Database error: {e}")
@@ -64,7 +64,3 @@ if __name__ == "__main__":
     args = parser.parse_args()
     find_closest_brewery(args.latitude, args.longitude)
 
-
-        
-        
-        
